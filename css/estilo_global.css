@@ -1,0 +1,113 @@
+body {
+    font-family: 'Georgia', serif; 
+    background-color: #F3EBE6;
+    color: #1A1A1A; 
+    margin: 0;
+    padding: 0;
+}
+
+.encabezado-principal {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-bottom: 2px solid #5C3A21;
+}
+
+.titulo-sitio {
+    color: #5C3A21; 
+    font-size: 30px; 
+    margin: 10px 0;
+    text-align: center;
+}
+
+.menu-principal ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.menu-principal ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.menu-principal ul li a {
+    text-decoration: none;
+    color: #5C3A21;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.logo-img {
+    max-width: 90px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.boton-principal {
+    display: inline-block;
+    background-color: #5C3A21;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.boton-principal:hover {
+    background-color: #3d2514;
+}
+
+.tarjeta-seccion {
+    background-color: #FFFFFF;
+    margin: 30px auto;
+    padding: 30px;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.titulo-seccion {
+    color: #5C3A21;
+    border-bottom: 1px solid #E0D5CE;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.tarjeta-seccion h2 {
+    color: #5C3A21;
+    text-align: center;
+}
+
+.tarjeta-seccion p, .tarjeta-seccion ul {
+    text-align: center;
+}
+
+.tarjeta-seccion ul {
+    list-style-position: inside;
+    padding: 0;
+}
+
+.imagen-destacada {
+    display: block;
+    max-width: 100%;
+    width: 500px;      
+    height: auto;
+    margin: 20px auto 0;
+    border-radius: 8px;
+}
+
+.pie-pagina {
+    background-color: #5C3A21;
+    color: #F3EBE6;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+}
