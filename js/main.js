@@ -44,3 +44,51 @@ function agregarAlCarrito(idProducto) {
     console.log(carrito);
 }
 document.addEventListener("DOMContentLoaded", renderizarProductos);
+
+function renderizarCarrito() {
+    const contenedorCarrito = document.getElementById("lista-carrito");
+    const contenedorTotal = document.getElementById("total-carrito");
+    
+    if (!contenedorCarrito) return; 
+
+    contenedorCarrito.innerHTML = "";
+    let total = 0;
+
+    if (carrito.length === 0) {
+        contenedorCarrito.innerHTML = "<p style='text-align:center; padding: 40px;'>Tu carrito está vacío.</p>";
+        contenedorTotal.innerText = "$0";
+        return;
+    }
+
+    carrito.forEach((producto, index) => {
+        let subtotal = producto.precio * producto.cantidad;
+        total += subtotal;
+
+        contenedorCarrito.innerHTML += `
+            <div class="item-carrito">
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <div class="item-carrito-info">
+                    <h4>${producto.nombre}</h4>
+                    <p>$${producto.precio.toLocaleString('es-CL')} x ${producto.cantidad}</p>
+                </div>
+                <div class="item-carrito-acciones">
+                    <strong style="display:block; font-size: 18px;">$${subtotal.toLocaleString('es-CL')}</strong>
+                    <button onclick="eliminarDelCarrito(${index})" style="color:red; cursor:pointer; border:none; background:none; text-decoration:underline; margin-top:5px;">Eliminar</button>
+                </div>
+            </div>
+        `;
+    });
+
+    contenedorTotal.innerText = `$${total.toLocaleString('es-CL')}`;
+}
+
+function eliminarDelCarrito(index) {
+    carrito.splice(index, 1); 
+    localStorage.setItem("carritoSuus", JSON.stringify(carrito)); 
+    renderizarCarrito(); 
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderizarProductos();
+    renderizarCarrito();
+});

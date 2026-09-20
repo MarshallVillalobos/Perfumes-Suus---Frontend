@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Perfumes Suus</title>
+    <title>Mi Carrito - Perfumes Suus</title>
     <link rel="stylesheet" href="css/estilo_global.css">
-    <link rel="stylesheet" href="css/estilos_productos.css"> 
 </head>
 <body>
     
@@ -32,15 +31,28 @@
     </header>
 
     <main class="tarjeta-seccion">
-        <h2 class="titulo-seccion">Nuestras Fragancias</h2>
-        
-        <div class="grilla-productos">
+        <div class="contenedor-filas">
+            <div class="col-8" id="lista-carrito">
+            </div>
+            
+            <div class="col-4 resumen-carrito">
+                <h3>TOTAL: <span id="total-carrito" style="float: right;">$0</span></h3>
+                
+                <label for="cupon">Ingrese cupón de descuento:</label>
+                <div class="contenedor-cupon">
+                    <input type="text" id="cupon">
+                    <button class="btn-aplicar">Aplicar</button>
+                </div>
+                
+                <button class="boton-principal btn-pagar" >PAGAR</button>
+            </div>
         </div>
     </main>
 
     <footer class="pie-pagina">
         <p>Perfumes Suus - Todos los derechos reservados.</p>
     </footer>
+    
     <script src="js/main.js"></script>
 </body>
 </html>
