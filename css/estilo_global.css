@@ -111,3 +111,27 @@ body {
     padding: 30px;
     margin-top: 40px;
 }
+
+.contenedor-filas {
+    overflow: hidden; 
+}
+
+[class*="col-"] {
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+@media only screen and (min-width: 768px) {
+    .col-3 { width: 25%; }
+    .col-6 { width: 50%; }
+    .col-9 { width: 75%; }
+    
+    /* Centrado vertical en escritorio */
+    .tarjeta-seccion.contenedor-filas {
+        display: flex;
+        align-items: center;
+        text-align: left;
+    }
+}
