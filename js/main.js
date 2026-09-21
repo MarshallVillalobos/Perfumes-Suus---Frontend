@@ -3,28 +3,28 @@ const productosPerfumes = [
     "id": 1,
     "nombre": "Andrews Eau de Parfum",
     "precio": 50000,
-    "imagen": "img/perfume_principal.webp",
+    "imagen": "img/Andrews-1-IA.webp",
     "descripcion": "Fragancia exclusiva con notas amaderadas y toques cítricos, diseñada para durar todo el día."
   },
   {
     "id": 2,
     "nombre": "Power of You",
     "precio": 65000,
-    "imagen": "img/perfume_principal.webp",
+    "imagen": "img/armani-power-of-you-edp-90-ml-silk-perfumes.webp",
     "descripcion": "Aroma intenso que combina notas dulces y orientales para una presencia inconfundible y magnética."
   },
   {
     "id": 3,
     "nombre": "Oud Wood Intense",
     "precio": 85000,
-    "imagen": "img/perfume_principal.webp",
+    "imagen": "img/oud-wood-intense-1.jpg",
     "descripcion": "Fragancia profunda y exótica, centrada en el rico aroma de la madera de oud, complementado con especias cálidas."
   },
   {
     "id": 4,
     "nombre": "Santal 33",
     "precio": 120000,
-    "imagen": "img/perfume_principal.webp",
+    "imagen": "img/D_NQ_NP_798570-MLA82944418030_032025-O.webp",
     "descripcion": "Un aroma icónico e inconfundible, con notas de cardamomo, iris, violeta y ambroxan, que evoca el espíritu del oeste americano."
   }
 ]
@@ -188,7 +188,6 @@ function inicializarUbicaciones() {
 function actualizarContadorCarrito() {
     const contador = document.getElementById("contador-carrito");
     if (contador) {
-        // Calculamos la cantidad total sumando la propiedad 'cantidad' de cada producto
         const cantidadTotal = carrito.reduce((total, producto) => total + producto.cantidad, 0);
         contador.innerText = cantidadTotal;
     }
@@ -419,4 +418,10 @@ function validarRutChileno(rutString) {
     let dvCalculado = dvEsperado === 11 ? "0" : dvEsperado === 10 ? "K" : dvEsperado.toString();
 
     return dv === dvCalculado;
+}
+
+function cerrarSesion() {
+
+    alert("Has cerrado sesión exitosamente.");
+    window.location.href = "login.html";
 }
