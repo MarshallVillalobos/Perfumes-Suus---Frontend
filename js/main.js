@@ -1,4 +1,3 @@
-
 const productosPerfumes = [
     { id: 1, nombre: "Andrews Eau de Parfum", precio: 50000, imagen: "img/perfume_principal.webp" },
     { id: 2, nombre: "Power of You", precio: 65000, imagen: "img/perfume_principal.webp" },
@@ -8,6 +7,10 @@ const productosPerfumes = [
 
 let carrito = JSON.parse(localStorage.getItem("carritoSuus")) || [];
 
+function validarCorreo(email) {
+    const regex = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/i;
+    return regex.test(email);
+}
 
 function renderizarProductos() {
     const contenedor = document.querySelector(".grilla-productos");
@@ -29,7 +32,6 @@ function renderizarProductos() {
 }
 
 function agregarAlCarrito(idProducto) {
-
     const productoEncontrado = productosPerfumes.find(p => p.id === idProducto);
     const itemEnCarrito = carrito.find(item => item.id === idProducto);
     
@@ -43,7 +45,6 @@ function agregarAlCarrito(idProducto) {
     alert(`¡${productoEncontrado.nombre} añadido al carrito!`);
     console.log(carrito);
 }
-document.addEventListener("DOMContentLoaded", renderizarProductos);
 
 function renderizarCarrito() {
     const contenedorCarrito = document.getElementById("lista-carrito");
@@ -73,7 +74,7 @@ function renderizarCarrito() {
                 </div>
                 <div class="item-carrito-acciones">
                     <strong style="display:block; font-size: 18px;">$${subtotal.toLocaleString('es-CL')}</strong>
-                    <button onclick="eliminarDelCarrito(${index})" style="color:red; cursor:pointer; border:none; background:none; text-decoration:underline; margin-top:5px;">Eliminar</button>
+                    <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})">Eliminar</button>
                 </div>
             </div>
         `;
@@ -91,35 +92,21 @@ function eliminarDelCarrito(index) {
 document.addEventListener("DOMContentLoaded", () => {
     renderizarProductos();
     renderizarCarrito();
-});
 
-/* VALIDACIONES DEL FORMULARIO DE LOGIN */
-
-document.addEventListener("DOMContentLoaded", () => {
-    
     const formLogin = document.getElementById("formulario-login");
-
     if (formLogin) {
         formLogin.addEventListener("submit", function(evento) {
-            
             evento.preventDefault(); 
 
-            
-            const inputCorreo = document.getElementById("correo").value.trim();
+            const inputCorreo = document.getElementById("correo").value.trim().toLowerCase();
             const inputContrasena = document.getElementById("contrasena").value.trim();
-            
             
             const errorCorreo = document.getElementById("error-correo");
             const errorContrasena = document.getElementById("error-contrasena");
             
-            
             errorCorreo.innerText = "";
             errorContrasena.innerText = "";
             let hayErrores = false;
-
-            
-            const dominiosValidos = ["@duoc.cl", "@profesor.duoc.cl", "@gmail.com"];
-            const terminaEnDominioValido = dominiosValidos.some(dominio => inputCorreo.endsWith(dominio));
 
             if (inputCorreo === "") {
                 errorCorreo.innerText = "El correo es obligatorio.";
@@ -127,12 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (inputCorreo.length > 100) {
                 errorCorreo.innerText = "El correo no puede superar los 100 caracteres.";
                 hayErrores = true;
-            } else if (!terminaEnDominioValido) {
-                errorCorreo.innerText = "Solo se permiten correos @duoc.cl, @profesor.duoc.cl o @gmail.com.";
+            } else if (!validarCorreo(inputCorreo)) {
+                errorCorreo.innerText = "Formato inválido. Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.";
                 hayErrores = true;
             }
 
-            
             if (inputContrasena === "") {
                 errorContrasena.innerText = "La contraseña es obligatoria.";
                 hayErrores = true;
@@ -141,12 +127,100 @@ document.addEventListener("DOMContentLoaded", () => {
                 hayErrores = true;
             }
 
-            
             if (!hayErrores) {
-                
                 alert("¡Inicio de sesión exitoso!");
                 window.location.href = "inicio.html"; 
             }
         });
     }
+
+    const formRegistro = document.getElementById("formulario-registro");
+    if (formRegistro) {
+        formRegistro.addEventListener("submit", function(evento) {
+            evento.preventDefault(); 
+
+            const inputRun = document.getElementById("run").value.trim();
+            const inputNombre = document.getElementById("nombre").value.trim();
+            const inputApellidos = document.getElementById("apellidos").value.trim();
+            const inputCorreo = document.getElementById("correo-reg").value.trim().toLowerCase();
+            
+            const errorRun = document.getElementById("error-run");
+            const errorNombre = document.getElementById("error-nombre");
+            const errorApellidos = document.getElementById("error-apellidos");
+            const errorCorreo = document.getElementById("error-correo-reg");
+            
+            errorRun.innerText = "";
+            errorNombre.innerText = "";
+            errorApellidos.innerText = "";
+            errorCorreo.innerText = "";
+            let hayErrores = false;
+
+            if (inputRun === "") {
+                errorRun.innerText = "El RUN es obligatorio.";
+                hayErrores = true;
+            } else if (inputRun.includes(".") || inputRun.includes("-")) {
+                errorRun.innerText = "El RUN debe ser ingresado sin puntos ni guion.";
+                hayErrores = true;
+            } else if (inputRun.length < 7 || inputRun.length > 9) {
+                errorRun.innerText = "El RUN debe tener entre 7 y 9 caracteres.";
+                hayErrores = true;
+            } else if (!validarRutChileno(inputRun)) {
+                errorRun.innerText = "El RUN ingresado no es válido matemáticamente.";
+                hayErrores = true;
+            }
+
+            if (inputNombre === "") {
+                errorNombre.innerText = "El nombre es obligatorio.";
+                hayErrores = true;
+            } else if (inputNombre.length > 50) {
+                errorNombre.innerText = "El nombre no puede superar los 50 caracteres.";
+                hayErrores = true;
+            }
+
+            if (inputApellidos === "") {
+                errorApellidos.innerText = "Los apellidos son obligatorios.";
+                hayErrores = true;
+            } else if (inputApellidos.length > 100) {
+                errorApellidos.innerText = "Los apellidos no pueden superar los 100 caracteres.";
+                hayErrores = true;
+            }
+
+            if (inputCorreo === "") {
+                errorCorreo.innerText = "El correo es obligatorio.";
+                hayErrores = true;
+            } else if (inputCorreo.length > 100) {
+                errorCorreo.innerText = "El correo no puede superar los 100 caracteres.";
+                hayErrores = true;
+            } else if (!validarCorreo(inputCorreo)) {
+                errorCorreo.innerText = "Formato inválido. Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.";
+                hayErrores = true;
+            }
+
+            if (!hayErrores) {
+                alert("¡Registro completado con éxito!");
+                window.location.href = "login.html"; 
+            }
+        });
+    }
 });
+
+function validarRutChileno(rutString) {
+    const cuerpo = rutString.slice(0, -1);
+    const dv = rutString.slice(-1).toUpperCase();
+    
+    if (!/^[0-9]+$/.test(cuerpo)) return false;
+
+    let suma = 0;
+    let multiplo = 2;
+
+    for (let i = 1; i <= cuerpo.length; i++) {
+        const index = multiplo * rutString.charAt(cuerpo.length - i);
+        suma = suma + index;
+        multiplo = multiplo < 7 ? multiplo + 1 : 2;
+    }
+
+    const dvEsperado = 11 - (suma % 11);
+    let dvCalculado = dvEsperado === 11 ? "0" : dvEsperado === 10 ? "K" : dvEsperado.toString();
+
+    return dv === dvCalculado;
+}

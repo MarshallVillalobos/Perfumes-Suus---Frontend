@@ -12,6 +12,7 @@ body {
     border-bottom: 2px solid #5C3A21;
     display: flex;
     align-items: center;
+    flex-wrap: wrap; 
 }
 
 .titulo-sitio {
@@ -142,12 +143,31 @@ body {
     padding: 0 15px;
 }
 
+.contenedor-centrado {
+    text-align: center;
+}
+
+.texto-seccion {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-eliminar {
+    color: red;
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    margin-top: 5px;
+}
+
 @media only screen and (min-width: 768px) {
     .col-3 { width: 25%; }
+    .col-4 { width: 33.33%; }
     .col-6 { width: 50%; }
+    .col-8 { width: 66.66%; }
     .col-9 { width: 75%; }
     
-    /* Centrado vertical en escritorio */
     .tarjeta-seccion.contenedor-filas {
         display: flex;
         align-items: center;
@@ -273,4 +293,11 @@ body {
     width: 100%;
     font-size: 16px;
     padding: 12px;
+}
+
+/* Estilo para el separador del menú de usuario */
+.separador-menu {
+    color: #5C3A21;
+    margin: 0 8px;
+    font-weight: bold;
 }
