@@ -92,3 +92,61 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarProductos();
     renderizarCarrito();
 });
+
+/* VALIDACIONES DEL FORMULARIO DE LOGIN */
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const formLogin = document.getElementById("formulario-login");
+
+    if (formLogin) {
+        formLogin.addEventListener("submit", function(evento) {
+            
+            evento.preventDefault(); 
+
+            
+            const inputCorreo = document.getElementById("correo").value.trim();
+            const inputContrasena = document.getElementById("contrasena").value.trim();
+            
+            
+            const errorCorreo = document.getElementById("error-correo");
+            const errorContrasena = document.getElementById("error-contrasena");
+            
+            
+            errorCorreo.innerText = "";
+            errorContrasena.innerText = "";
+            let hayErrores = false;
+
+            
+            const dominiosValidos = ["@duoc.cl", "@profesor.duoc.cl", "@gmail.com"];
+            const terminaEnDominioValido = dominiosValidos.some(dominio => inputCorreo.endsWith(dominio));
+
+            if (inputCorreo === "") {
+                errorCorreo.innerText = "El correo es obligatorio.";
+                hayErrores = true;
+            } else if (inputCorreo.length > 100) {
+                errorCorreo.innerText = "El correo no puede superar los 100 caracteres.";
+                hayErrores = true;
+            } else if (!terminaEnDominioValido) {
+                errorCorreo.innerText = "Solo se permiten correos @duoc.cl, @profesor.duoc.cl o @gmail.com.";
+                hayErrores = true;
+            }
+
+            
+            if (inputContrasena === "") {
+                errorContrasena.innerText = "La contraseña es obligatoria.";
+                hayErrores = true;
+            } else if (inputContrasena.length < 4 || inputContrasena.length > 10) {
+                errorContrasena.innerText = "La contraseña debe tener entre 4 y 10 caracteres.";
+                hayErrores = true;
+            }
+
+            
+            if (!hayErrores) {
+                
+                alert("¡Inicio de sesión exitoso!");
+                window.location.href = "inicio.html"; 
+            }
+        });
+    }
+});

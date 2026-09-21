@@ -165,7 +165,6 @@ body {
     text-align: left;
 }
 
-/* Corrección de la miniatura del perfume para evitar deformación */
 .item-carrito img {
     width: 100px; 
     max-width: 100%; 
@@ -229,4 +228,49 @@ body {
 .btn-pagar {
     width: 100%;
     background-color: #009900;
+}
+
+/* ESTILOS DE LOGIN */
+
+.contenedor-login {
+    max-width: 500px;
+}
+
+.formulario-auth {
+    text-align: left;
+    padding: 20px 0;
+}
+
+.grupo-form {
+    margin-bottom: 20px;
+}
+
+.grupo-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #5C3A21;
+}
+
+
+.grupo-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #E0D5CE;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+.mensaje-error {
+    color: #cc0000;
+    font-size: 13px;
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.btn-block {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
 }

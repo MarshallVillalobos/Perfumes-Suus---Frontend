@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Perfumes Suus</title>
+    <link rel="stylesheet" href="css/estilo_global.css">
+</head>
+<body>
+
+    
+    <header class="encabezado-principal">
+        <div class="col-3">
+            <img src="img/Logo_pagina_web.png" alt="Logo pagina web" class="logo-img">
+        </div>
+        
+        <div class="col-6 contenedor-centrado">
+            <h1 class="titulo-sitio">Perfumes Suus</h1>
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="carrito.html">Mi Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="col-3 alineacion-derecha">
+            <nav class="menu-secundario">
+                <a href="login.html">Iniciar Sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    
+    <main class="tarjeta-seccion contenedor-login">
+        <h2 class="titulo-seccion">Iniciar Sesión</h2>
+        
+        
+        <form id="formulario-login" class="formulario-auth">
+            
+            <div class="grupo-form">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" placeholder="ejemplo@duoc.cl">
+                
+                <span id="error-correo" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" placeholder="Mínimo 4 caracteres">
+                
+                <span id="error-contrasena" class="mensaje-error"></span>
+            </div>
+
+            <button type="submit" class="boton-principal btn-block">Ingresar</button>
+        </form>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>Perfumes Suus - Todos los derechos reservados.</p>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
