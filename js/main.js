@@ -236,8 +236,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (!hayErrores) {
-                alert("¡Inicio de sesión exitoso!");
-                window.location.href = "inicio.html"; 
+                if (inputCorreo === "admin@duoc.cl") {
+                    alert("¡Bienvenido al panel de control, Administrador!");
+                    window.location.href = "admin_home.html";
+                } else {
+                    alert("¡Inicio de sesión exitoso!");
+                    window.location.href = "inicio.html"; 
+                }
             }
         });
     }

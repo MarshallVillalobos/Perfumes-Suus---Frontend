@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Administrador Perfumes Suus</title>
+    <link rel="stylesheet" href="css/estilo_global.css">
+</head>
+<body class="body-admin">
+
+    <div class="contenedor-admin">
+        
+        <aside class="sidebar-admin">
+            <div class="logo-admin">
+                <img src="img/Logo_pagina_web.png" alt="Logo Perfumes Suus" style="max-width: 50px; margin-right: 10px;">
+                <h3>Suus Admin</h3>
+            </div>
+            
+            <nav class="menu-admin">
+                <ul>
+                    <li class="activo"><a href="admin_home.html">Dashboard</a></li>
+                    <li><a href="admin_productos.html">Productos</a></li>
+                    <li><a href="admin_usuarios.html">Usuarios</a></li>
+                </ul>
+            </nav>
+
+            <div class="perfil-admin">
+                <p><strong>Configuración</strong></p>
+                <p>Perfil</p>
+                <button class="btn-salir" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
+        </aside>
+
+        <main class="contenido-admin">
+            <header class="header-admin">
+                <h1>¡HOLA Administrador!</h1>
+                <div class="notificaciones">
+                    🔔
+                </div>
+            </header>
+
+            <section class="panel-bienvenida">
+                <h2>Bienvenido al Sistema de Gestión</h2>
+                <p>Desde aquí podrás controlar el inventario de perfumes y administrar los accesos de tus usuarios.</p>
+                
+                <div class="tarjetas-resumen">
+                    <div class="tarjeta-dato">
+                        <h3>Total Productos</h3>
+                        <p class="numero-grande">4</p>
+                    </div>
+                    <div class="tarjeta-dato">
+                        <h3>Usuarios Activos</h3>
+                        <p class="numero-grande">2</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
