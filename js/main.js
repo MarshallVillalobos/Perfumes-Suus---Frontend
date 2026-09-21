@@ -89,9 +89,53 @@ function eliminarDelCarrito(index) {
     renderizarCarrito(); 
 }
 
+
+/* LÓGICA DE REGIONES Y COMUNAS  */
+const datosUbicacion = {
+    "Región Metropolitana": ["Santiago", "Providencia", "Las Condes", "Maipú", "Puente Alto"],
+    "Valparaíso": ["Valparaíso", "Viña del Mar", "Quilpué", "Concón"],
+    "Biobío": ["Concepción", "Talcahuano", "Los Ángeles", "Chillán"]
+};
+
+function inicializarUbicaciones() {
+    const selectRegion = document.getElementById("region");
+    const selectComuna = document.getElementById("comuna");
+
+    if (!selectRegion || !selectComuna) return;
+
+    for (const region in datosUbicacion) {
+        const option = document.createElement("option");
+        option.value = region;
+        option.textContent = region;
+        selectRegion.appendChild(option);
+    }
+
+    selectRegion.addEventListener("change", function() {
+        const regionSeleccionada = this.value;
+        
+        selectComuna.innerHTML = '<option value="">-- Seleccione una comuna --</option>';
+        
+        if (regionSeleccionada !== "") {
+            selectComuna.disabled = false;
+            const comunas = datosUbicacion[regionSeleccionada];
+            
+            comunas.forEach(comuna => {
+                const option = document.createElement("option");
+                option.value = comuna;
+                option.textContent = comuna;
+                selectComuna.appendChild(option);
+            });
+        } else {
+            selectComuna.disabled = true;
+        }
+    });
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     renderizarProductos();
     renderizarCarrito();
+    inicializarUbicaciones();
 
     const formLogin = document.getElementById("formulario-login");
     if (formLogin) {
@@ -154,6 +198,36 @@ document.addEventListener("DOMContentLoaded", () => {
             errorApellidos.innerText = "";
             errorCorreo.innerText = "";
             let hayErrores = false;
+
+            const inputRegion = document.getElementById("region").value;
+            const inputComuna = document.getElementById("comuna").value;
+            const inputDireccion = document.getElementById("direccion").value.trim();
+
+            const errorRegion = document.getElementById("error-region");
+            const errorComuna = document.getElementById("error-comuna");
+            const errorDireccion = document.getElementById("error-direccion");
+
+            errorRegion.innerText = "";
+            errorComuna.innerText = "";
+            errorDireccion.innerText = "";
+
+            if (inputRegion === "") {
+                errorRegion.innerText = "Debe seleccionar una región.";
+                hayErrores = true;
+            }
+            
+            if (inputComuna === "") {
+                errorComuna.innerText = "Debe seleccionar una comuna.";
+                hayErrores = true;
+            }
+
+            if (inputDireccion === "") {
+                errorDireccion.innerText = "La dirección es obligatoria.";
+                hayErrores = true;
+            } else if (inputDireccion.length > 300) {
+                errorDireccion.innerText = "La dirección no puede superar los 300 caracteres.";
+                hayErrores = true;
+            }
 
             if (inputRun === "") {
                 errorRun.innerText = "El RUN es obligatorio.";

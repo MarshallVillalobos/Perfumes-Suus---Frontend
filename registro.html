@@ -67,6 +67,28 @@
                 <input type="date" id="fecha-nac">
             </div>
 
+            <div class="grupo-form">
+                <label for="region">Región</label>
+                <select id="region">
+                    <option value="">-- Seleccione una región --</option>
+                </select>
+                <span id="error-region" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="comuna">Comuna</label>
+                <select id="comuna">
+                    <option value="">-- Seleccione una comuna --</option>
+                </select>
+                <span id="error-comuna" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" placeholder="Tu dirección completa" maxlength="300">
+                <span id="error-direccion" class="mensaje-error"></span>
+            </div>
+
             <button type="submit" class="boton-principal btn-block">Registrarse</button>
         </form>
     </main>

@@ -273,12 +273,14 @@ body {
 }
 
 
-.grupo-form input {
+.grupo-form input,
+.grupo-form select {
     width: 100%;
     padding: 10px;
     border: 1px solid #E0D5CE;
     border-radius: 4px;
     box-sizing: border-box; 
+    font-family: inherit;
 }
 
 .mensaje-error {
