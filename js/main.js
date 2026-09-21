@@ -340,6 +340,59 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    
+    const formularioContacto = document.getElementById("formulario-contacto");
+    if (formularioContacto) {
+        formularioContacto.addEventListener("submit", function(evento) {
+            evento.preventDefault(); 
+
+            const inputNombreContacto = document.getElementById("nombre-contacto").value.trim();
+            const inputCorreoContacto = document.getElementById("correo-contacto").value.trim().toLowerCase();
+            const inputComentarioContacto = document.getElementById("comentario-contacto").value.trim();
+            
+            const errorNombreContacto = document.getElementById("error-nombre-contacto");
+            const errorCorreoContacto = document.getElementById("error-correo-contacto");
+            const errorComentarioContacto = document.getElementById("error-comentario-contacto");
+            
+            errorNombreContacto.innerText = "";
+            errorCorreoContacto.innerText = "";
+            errorComentarioContacto.innerText = "";
+            
+            let hayErrores = false;
+
+            if (inputNombreContacto === "") {
+                errorNombreContacto.innerText = "El nombre completo es obligatorio.";
+                hayErrores = true;
+            } else if (inputNombreContacto.length > 100) {
+                errorNombreContacto.innerText = "El nombre completo no puede superar los 100 caracteres.";
+                hayErrores = true;
+            }
+
+            if (inputCorreoContacto === "") {
+                errorCorreoContacto.innerText = "El correo es obligatorio.";
+                hayErrores = true;
+            } else if (inputCorreoContacto.length > 100) {
+                errorCorreoContacto.innerText = "El correo no puede superar los 100 caracteres.";
+                hayErrores = true;
+            } else if (!validarCorreo(inputCorreoContacto)) {
+                 errorCorreoContacto.innerText = "Formato inválido. Use @duoc.cl, @profesor.duoc.cl o @gmail.com.";
+                 hayErrores = true;
+            }
+
+            if (inputComentarioContacto === "") {
+                errorComentarioContacto.innerText = "El comentario es obligatorio.";
+                hayErrores = true;
+            } else if (inputComentarioContacto.length > 500) {
+                errorComentarioContacto.innerText = "El comentario no puede superar los 500 caracteres.";
+                hayErrores = true;
+            }
+
+            if (!hayErrores) {
+                alert("¡Mensaje de contacto enviado con éxito!");
+                formularioContacto.reset();
+            }
+        });
+    }
 });
 
 function validarRutChileno(rutString) {

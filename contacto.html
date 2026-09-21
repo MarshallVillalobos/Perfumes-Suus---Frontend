@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle de Producto - Perfumes Suus</title>
+    <title>Contacto - Perfumes Suus</title>
     <link rel="stylesheet" href="css/estilo_global.css">
 </head>
 <body>
@@ -38,34 +38,39 @@
         </div>
     </header>
 
-<main class="tarjeta-seccion" id="detalle-producto">
-    <div class="contenedor-filas">
-        <div class="col-6">
-            <img id="detalle-imagen" src="" alt="" class="img-detalle">
-            <div class="contenedor-miniaturas">
-                <div class="miniatura activa"></div>
-                <div class="miniatura"></div>
-                <div class="miniatura"></div>
-            </div>
+    <main class="tarjeta-seccion contenedor-login">
+        <div class="encabezado-contacto">
+            <h2 class="titulo-seccion titulo-sin-borde">Perfumes Suus</h2>
         </div>
 
-        <div class="col-6 info-producto">
-            <div class="encabezado-detalle">
-                <h2 id="detalle-nombre"></h2>
-                <h2 id="detalle-precio"></h2>
-            </div>
-
-            <p id="detalle-descripcion" class="descripcion-detalle"></p>
-
-            <div class="contenedor-cantidad">
-                <label for="cantidad">Cantidad</label>
-                <input type="number" id="cantidad" value="1" min="1" class="input-cantidad">
-            </div>
-
-            <button id="btn-detalle-agregar" class="boton-principal btn-block">Añadir al carrito</button>
+        <div class="banner-contacto">
+            FORMULARIO DE CONTACTOS
         </div>
-    </div>
-</main>
+        
+        <form id="formulario-contacto" class="formulario-auth" novalidate>
+            <div class="grupo-form">
+                <label for="nombre-contacto">NOMBRE COMPLETO</label>
+                <input type="text" id="nombre-contacto" maxlength="100">
+                <span id="error-nombre-contacto" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="correo-contacto">CORREO</label>
+                <input type="email" id="correo-contacto" maxlength="100">
+                <span id="error-correo-contacto" class="mensaje-error"></span>
+            </div>
+
+            <div class="grupo-form">
+                <label for="comentario-contacto">CONTENIDO</label>
+                <textarea id="comentario-contacto" rows="5" maxlength="500"></textarea>
+                <span id="error-comentario-contacto" class="mensaje-error"></span>
+            </div>
+
+            <div class="acciones-contacto">
+                <button type="submit" class="boton-principal btn-mitad">ENVIAR MENSAJE</button>
+            </div>
+        </form>
+    </main>
 
     <footer class="pie-pagina">
         <p>Perfumes Suus - Todos los derechos reservados.</p>
