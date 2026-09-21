@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Usuario - Administrador Perfumes Suus</title>
+    <link rel="stylesheet" href="css/estilo_global.css">
+</head>
+<body class="body-admin">
+
+    <div class="contenedor-admin">
+        
+        <aside class="sidebar-admin">
+            <div class="logo-admin">
+                <img src="img/Logo_pagina_web.png" alt="Logo Perfumes Suus" class="logo-admin-img">
+                <h3>Suus Admin</h3>
+            </div>
+            
+            <nav class="menu-admin">
+                <ul>
+                    <li><a href="admin_home.html">Dashboard</a></li>
+                    <li><a href="admin_productos.html">Productos</a></li>
+                    <li class="activo"><a href="admin_usuarios.html">Usuarios</a></li>
+                </ul>
+            </nav>
+
+            <div class="perfil-admin">
+                <p><strong>Configuración</strong></p>
+                <p>Perfil</p>
+                <button class="btn-salir" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
+        </aside>
+
+        <main class="contenido-admin">
+            
+            <header class="header-mantenedor">
+                <h1>Nuevo Usuario</h1>
+                <a href="admin_usuarios.html" class="boton-oscuro btn-gris">VOLVER AL LISTADO</a>
+            </header>
+
+            <section class="panel-contenido">
+                <div class="tarjeta-formulario-admin">
+                    <div class="encabezado-formulario-usuario">
+                        <h2 class="titulo-formulario-admin">Registro de usuario</h2>
+                    </div>
+                    
+                    <form id="formulario-nuevo-usuario" novalidate>
+                        
+                        <div class="grupo-form-admin">
+                            <label for="nombre-usuario">NOMBRE COMPLETO *</label>
+                            <input type="text" id="nombre-usuario" placeholder="Ej: Juan Pérez" maxlength="100">
+                            <span id="error-nombre-usuario" class="mensaje-error"></span>
+                        </div>
+
+                        <div class="grupo-form-admin">
+                            <label for="correo-usuario">CORREO *</label>
+                            <input type="email" id="correo-usuario" placeholder="Ej: usuario@duoc.cl" maxlength="100">
+                            <span id="error-correo-usuario" class="mensaje-error"></span>
+                        </div>
+
+                        <div class="fila-form-admin">
+                            <div class="grupo-form-admin col-mitad">
+                                <label for="run-usuario">RUN *</label>
+                                <input type="text" id="run-usuario" placeholder="Sin puntos ni guion" maxlength="9">
+                                <span id="error-run-usuario" class="mensaje-error"></span>
+                            </div>
+
+                            <div class="grupo-form-admin col-mitad">
+                                <label for="rol-usuario">TIPO DE USUARIO *</label>
+                                <select id="rol-usuario">
+                                    <option value="">-- Seleccione el perfil --</option>
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Cliente">Cliente</option>
+                                    <option value="Vendedor">Vendedor</option>
+                                </select>
+                                <span id="error-rol-usuario" class="mensaje-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="fila-form-admin">
+                            <div class="grupo-form-admin col-mitad">
+                                <label for="pass-usuario">CONTRASEÑA *</label>
+                                <input type="password" id="pass-usuario" placeholder="Mínimo 4 caracteres" minlength="4" maxlength="10">
+                                <span id="error-pass-usuario" class="mensaje-error"></span>
+                            </div>
+
+                            <div class="grupo-form-admin col-mitad">
+                                <label for="conf-pass-usuario">CONFIRMAR CONTRASEÑA *</label>
+                                <input type="password" id="conf-pass-usuario" placeholder="Repita la contraseña" minlength="4" maxlength="10">
+                                <span id="error-conf-pass-usuario" class="mensaje-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="grupo-form-admin">
+                            <label for="telefono-usuario">TELÉFONO (opcional)</label>
+                            <input type="tel" id="telefono-usuario" placeholder="Ej: +56912345678">
+                        </div>
+
+                        <div class="fila-form-admin">
+                            <div class="grupo-form-admin col-mitad">
+                                <label for="region-usuario">REGIÓN *</label>
+                                <select id="region-usuario">
+                                    <option value="">-- Seleccione la región --</option>
+                                </select>
+                                <span id="error-region-usuario" class="mensaje-error"></span>
+                            </div>
+
+                            <div class="grupo-form-admin col-mitad">
+                                <label for="comuna-usuario">COMUNA *</label>
+                                <select id="comuna-usuario" disabled>
+                                    <option value="">-- Seleccione la comuna --</option>
+                                </select>
+                                <span id="error-comuna-usuario" class="mensaje-error"></span>
+                            </div>
+                        </div>
+
+                         <div class="grupo-form-admin">
+                            <label for="direccion-usuario">DIRECCIÓN *</label>
+                            <input type="text" id="direccion-usuario" placeholder="Calle y número" maxlength="300">
+                            <span id="error-direccion-usuario" class="mensaje-error"></span>
+                        </div>
+
+                        <div class="acciones-formulario-admin centrado">
+                            <button type="submit" class="boton-oscuro btn-largo">REGISTRAR</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
