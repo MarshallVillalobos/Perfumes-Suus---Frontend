@@ -41,6 +41,8 @@ function agregarAlCarrito(idProducto) {
         carrito.push({ ...productoEncontrado, cantidad: 1 });
     }
     localStorage.setItem("carritoSuus", JSON.stringify(carrito));
+
+    actualizarContadorCarrito();
     
     alert(`¡${productoEncontrado.nombre} añadido al carrito!`);
     console.log(carrito);
@@ -86,7 +88,8 @@ function renderizarCarrito() {
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1); 
     localStorage.setItem("carritoSuus", JSON.stringify(carrito)); 
-    renderizarCarrito(); 
+    renderizarCarrito();
+    actualizarContadorCarrito(); 
 }
 
 
@@ -131,8 +134,17 @@ function inicializarUbicaciones() {
     });
 }
 
+function actualizarContadorCarrito() {
+    const contador = document.getElementById("contador-carrito");
+    if (contador) {
+        // Calculamos la cantidad total sumando la propiedad 'cantidad' de cada producto
+        const cantidadTotal = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+        contador.innerText = cantidadTotal;
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+    actualizarContadorCarrito();
     renderizarProductos();
     renderizarCarrito();
     inicializarUbicaciones();
