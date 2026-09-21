@@ -38,37 +38,81 @@
         </div>
     </header>
 
-<main class="tarjeta-seccion" id="detalle-producto">
-    <div class="contenedor-filas">
-        <div class="col-6">
-            <img id="detalle-imagen" src="" alt="" class="img-detalle">
-            <div class="contenedor-miniaturas">
-                <div class="miniatura activa"></div>
-                <div class="miniatura"></div>
-                <div class="miniatura"></div>
+    <main class="tarjeta-seccion" id="detalle-producto">
+        <div class="contenedor-filas">
+            <div class="col-6">
+                <img id="detalle-imagen" src="" alt="" class="img-detalle">
+                <div class="contenedor-miniaturas">
+                    <div class="miniatura activa"></div>
+                    <div class="miniatura"></div>
+                    <div class="miniatura"></div>
+                </div>
+            </div>
+
+            <div class="col-6 info-producto">
+                <div class="encabezado-detalle">
+                    <h2 id="detalle-nombre"></h2>
+                    <h2 id="detalle-precio"></h2>
+                </div>
+
+                <p id="detalle-descripcion" class="descripcion-detalle"></p>
+
+                <div class="contenedor-cantidad">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" id="cantidad" value="1" min="1" class="input-cantidad">
+                </div>
+
+                <button id="btn-detalle-agregar" class="boton-principal btn-block">Añadir al carrito</button>
             </div>
         </div>
-
-        <div class="col-6 info-producto">
-            <div class="encabezado-detalle">
-                <h2 id="detalle-nombre"></h2>
-                <h2 id="detalle-precio"></h2>
+    </main>
+    <footer class="pie-pagina-avanzado">
+        <div class="contenedor-footer">
+            
+            <div class="col-footer">
+                <h3>Centro de Ayuda</h3>
+                <ul>
+                    <li><a href="#">Seguimiento de mis compras</a></li>
+                    <li><a href="#">Cambios y devoluciones</a></li>
+                    <li><a href="#">Garantía de producto</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                </ul>
             </div>
-
-            <p id="detalle-descripcion" class="descripcion-detalle"></p>
-
-            <div class="contenedor-cantidad">
-                <label for="cantidad">Cantidad</label>
-                <input type="number" id="cantidad" value="1" min="1" class="input-cantidad">
+            
+            <div class="col-footer">
+                <h3>Mundo Suus</h3>
+                <ul>
+                    <li><a href="inicio.html#historia">Nuestra Historia</a></li>
+                    <li><a href="inicio.html#sucursales">Nuestras Sucursales</a></li>
+                    <li><a href="#">Sostenibilidad</a></li>
+                    <li><a href="#">Cyber Suus</a></li>
+                </ul>
             </div>
-
-            <button id="btn-detalle-agregar" class="boton-principal btn-block">Añadir al carrito</button>
+            
+            <div class="col-footer">
+                <h3>Síguenos</h3>
+                <div class="iconos-footer">
+                    <span>📷 Instagram</span>
+                    <span>🎵 TikTok</span>
+                    <span>📘 Facebook</span>
+                </div>
+                
+                <h3 class="titulo-espaciado">Medios de pago</h3>
+                <div class="iconos-footer">
+                    <span>💳 Webpay</span>
+                    <span>🏦 Transferencia</span>
+                </div>
+            </div>
+            
         </div>
-    </div>
-</main>
-
-    <footer class="pie-pagina">
-        <p>Perfumes Suus - Todos los derechos reservados.</p>
+        
+        <div class="legal-footer">
+            <p>Copyright © 2024 Perfumes Suus | 
+                <a href="#">Términos y Condiciones</a> | 
+                <a href="#">Políticas de Privacidad</a> | 
+                <a href="#">Bases legales</a>
+            </p>
+        </div>
     </footer>
     
     <script src="js/main.js"></script>
