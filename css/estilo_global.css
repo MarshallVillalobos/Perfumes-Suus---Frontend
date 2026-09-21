@@ -684,3 +684,98 @@ body {
     font-weight: bold;
     border-color: #8CBAE8;
 }
+
+/* ESTILOS DE FORMULARIOS ADMINISTRATIVOS */
+
+.logo-admin-img {
+    max-width: 50px;
+    margin-right: 10px;
+}
+
+.img-tabla-admin {
+    width: 40px;
+    border-radius: 4px;
+}
+
+.tarjeta-formulario-admin {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.titulo-formulario-admin {
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 15px;
+    color: #333;
+    font-size: 20px;
+}
+
+.grupo-form-admin {
+    margin-bottom: 15px;
+}
+
+.grupo-form-admin label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+}
+
+.grupo-form-admin input,
+.grupo-form-admin select,
+.grupo-form-admin textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.grupo-form-admin input:focus,
+.grupo-form-admin select:focus,
+.grupo-form-admin textarea:focus {
+    outline: none;
+    border-color: #8CBAE8;
+    box-shadow: 0 0 5px rgba(140, 186, 232, 0.5);
+}
+
+.fila-form-admin {
+    display: flex;
+    gap: 20px;
+}
+
+.col-mitad {
+    flex: 1;
+}
+
+.btn-gris {
+    background-color: #6c757d;
+}
+
+.btn-gris:hover {
+    background-color: #5a6268;
+}
+
+.btn-largo {
+    width: auto;
+    padding: 12px 30px;
+}
+
+.acciones-formulario-admin {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.logo-admin-img {
+    max-width: 50px;
+    margin-right: 10px;
+}
