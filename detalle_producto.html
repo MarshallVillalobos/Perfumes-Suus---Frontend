@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto - Perfumes Suus</title>
+    <link rel="stylesheet" href="css/estilo_global.css">
+</head>
+<body>
+
+    <header class="encabezado-principal">
+        <div class="col-3">
+            <img src="img/Logo_pagina_web.png" alt="Logo pagina web" class="logo-img">
+        </div>
+        
+        <div class="col-6 contenedor-centrado">
+            <h1 class="titulo-sitio">Perfumes Suus</h1>
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li>
+                        <a href="carrito.html">
+                            Mi Carrito 🛒 <span id="contador-carrito">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="col-3 alineacion-derecha">
+            <nav class="menu-secundario">
+                <a href="login.html">Iniciar Sesión</a> 
+                <span class="separador-menu">|</span> 
+                <a href="registro.html">Registrar usuario</a>
+            </nav>
+        </div>
+    </header>
+
+<main class="tarjeta-seccion" id="detalle-producto">
+    <div class="contenedor-filas">
+        <div class="col-6">
+            <img id="detalle-imagen" src="" alt="" class="img-detalle">
+            <div class="contenedor-miniaturas">
+                <div class="miniatura activa"></div>
+                <div class="miniatura"></div>
+                <div class="miniatura"></div>
+            </div>
+        </div>
+
+        <div class="col-6 info-producto">
+            <div class="encabezado-detalle">
+                <h2 id="detalle-nombre"></h2>
+                <h2 id="detalle-precio"></h2>
+            </div>
+
+            <p id="detalle-descripcion" class="descripcion-detalle"></p>
+
+            <div class="contenedor-cantidad">
+                <label for="cantidad">Cantidad</label>
+                <input type="number" id="cantidad" value="1" min="1" class="input-cantidad">
+            </div>
+
+            <button id="btn-detalle-agregar" class="boton-principal btn-block">Añadir al carrito</button>
+        </div>
+    </div>
+</main>
+
+    <footer class="pie-pagina">
+        <p>Perfumes Suus - Todos los derechos reservados.</p>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

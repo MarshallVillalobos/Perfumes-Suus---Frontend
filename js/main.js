@@ -1,9 +1,33 @@
 const productosPerfumes = [
-    { id: 1, nombre: "Andrews Eau de Parfum", precio: 50000, imagen: "img/perfume_principal.webp" },
-    { id: 2, nombre: "Power of You", precio: 65000, imagen: "img/perfume_principal.webp" },
-    { id: 3, nombre: "Oud Wood Intense", precio: 85000, imagen: "img/perfume_principal.webp" },
-    { id: 4, nombre: "Santal 33", precio: 120000, imagen: "img/perfume_principal.webp" }
-];
+  {
+    "id": 1,
+    "nombre": "Andrews Eau de Parfum",
+    "precio": 50000,
+    "imagen": "img/perfume_principal.webp",
+    "descripcion": "Fragancia exclusiva con notas amaderadas y toques cítricos, diseñada para durar todo el día."
+  },
+  {
+    "id": 2,
+    "nombre": "Power of You",
+    "precio": 65000,
+    "imagen": "img/perfume_principal.webp",
+    "descripcion": "Aroma intenso que combina notas dulces y orientales para una presencia inconfundible y magnética."
+  },
+  {
+    "id": 3,
+    "nombre": "Oud Wood Intense",
+    "precio": 85000,
+    "imagen": "img/perfume_principal.webp",
+    "descripcion": "Fragancia profunda y exótica, centrada en el rico aroma de la madera de oud, complementado con especias cálidas."
+  },
+  {
+    "id": 4,
+    "nombre": "Santal 33",
+    "precio": 120000,
+    "imagen": "img/perfume_principal.webp",
+    "descripcion": "Un aroma icónico e inconfundible, con notas de cardamomo, iris, violeta y ambroxan, que evoca el espíritu del oeste americano."
+  }
+]
 
 let carrito = JSON.parse(localStorage.getItem("carritoSuus")) || [];
 
@@ -22,23 +46,50 @@ function renderizarProductos() {
         const article = document.createElement("article");
         article.className = "tarjeta-producto";
         article.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
+            <a href="detalle_producto.html?id=${producto.id}" class="enlace-producto">
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <h3>${producto.nombre}</h3>
+            </a>
             <p class="precio">$${producto.precio.toLocaleString('es-CL')}</p>
+            <a href="detalle_producto.html?id=${producto.id}" class="boton-principal">Ver detalle</a>
             <button class="boton-principal" onclick="agregarAlCarrito(${producto.id})">Añadir al carrito</button>
         `;
         contenedor.appendChild(article);
     });
 }
 
-function agregarAlCarrito(idProducto) {
+function renderizarDetalle() {
+    const contenedor = document.getElementById("detalle-producto");
+    if (!contenedor) return;
+
+    const id = parseInt(new URLSearchParams(window.location.search).get("id"));
+    const producto = productosPerfumes.find(p => p.id === id);
+
+    if (!producto) {
+        contenedor.innerHTML = "<p>Producto no encontrado. <a href='productos.html'>Volver al catálogo</a></p>";
+        return;
+    }
+
+    document.title = `${producto.nombre} - Perfumes Suus`;
+    document.getElementById("detalle-imagen").src = producto.imagen;
+    document.getElementById("detalle-imagen").alt = producto.nombre;
+    document.getElementById("detalle-nombre").innerText = producto.nombre;
+    document.getElementById("detalle-precio").innerText = `$${producto.precio.toLocaleString('es-CL')}`;
+    document.getElementById("detalle-descripcion").innerText = producto.descripcion;
+    document.getElementById("btn-detalle-agregar").onclick = () => {
+        const cantidad = parseInt(document.getElementById("cantidad").value) || 1;
+        agregarAlCarrito(producto.id, cantidad);
+    };
+}
+
+function agregarAlCarrito(idProducto, cantidad = 1) {
     const productoEncontrado = productosPerfumes.find(p => p.id === idProducto);
     const itemEnCarrito = carrito.find(item => item.id === idProducto);
-    
+
     if (itemEnCarrito) {
-        itemEnCarrito.cantidad++;
+        itemEnCarrito.cantidad += cantidad;
     } else {
-        carrito.push({ ...productoEncontrado, cantidad: 1 });
+        carrito.push({ ...productoEncontrado, cantidad: cantidad });
     }
     localStorage.setItem("carritoSuus", JSON.stringify(carrito));
 
@@ -146,6 +197,7 @@ function actualizarContadorCarrito() {
 document.addEventListener("DOMContentLoaded", () => {
     actualizarContadorCarrito();
     renderizarProductos();
+    renderizarDetalle();
     renderizarCarrito();
     inicializarUbicaciones();
 
